@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from 'react';
+import Typography from '@material-ui/core/Typography';
 
-function App() {
+import { useStyles } from '../styles';
+import Paper from '@material-ui/core/Paper';
+
+import { Context } from '../Context';
+import { GetUsers } from '../api';
+
+
+const Todo = (props: any) => {
+  const [user, setUser] = useContext<any>(Context);
+  const classes = useStyles();
+
+  useEffect(() => {
+    GetUsers('', setUser)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {user?.map((user: any, idx: number) => (
+        <Paper key={idx} className={classes.paper}>
+          <Typography variant="subtitle1" component="h6" gutterBottom>
+            {user.name}
+          </Typography>
+          <small>Phone: {user.phone}</small><br />
+          <small>From :{user.address.city}</small><br />
+          <small>Website :{user.website}</small>
+        </Paper>
+      ))}
+    </>
   );
 }
 
-export default App;
+export default Todo;

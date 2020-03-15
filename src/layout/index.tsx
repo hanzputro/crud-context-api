@@ -1,48 +1,27 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { GetToDo } from '../config/Api';
-import { Context } from '../config/Context';
-
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import React from 'react';
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }),
-);
+import { useStyles } from '../styles';
+import Posts from './Posts';
+import Users from './Users';
 
-const Main = () => {
-  const [count, setCount] = useState(1);
-  const value = useContext(Context);
 
-  useEffect(() => {
-    GetToDo(count)
-  }, [])
-
+const Main = (props: any) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <button onClick={() => setCount(count + 1)}>Get ToDo</button>
-      <h1>{value}</h1>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>xs=12</Paper>
+    <Container className={classes.container} maxWidth="md">
+      <Grid container spacing={2}>
+        <Grid item xs={8}>
+          <Posts />
         </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
+        <Grid item xs={4}>
+          <Users />
         </Grid>
       </Grid>
-    </div>
+    </Container>
   );
-}
+};
 
 export default Main;

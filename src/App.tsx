@@ -1,12 +1,19 @@
 import React from 'react';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+import theme from './theme';
 import Layout from './layout';
-import { ContextProvider } from './config/Context';
+import { ContextProvider } from './Context';
 
 function App() {
   return (
-    <ContextProvider>
-      <Layout />
-    </ContextProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ContextProvider>
+        <Layout />
+      </ContextProvider>
+    </ThemeProvider>
   );
 }
 
