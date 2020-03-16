@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 
-import { useStyles } from '../styles';
+import { useStylesGlobal } from '../styles';
 import Paper from '@material-ui/core/Paper';
 
 import { Context } from '../Context';
@@ -10,7 +10,7 @@ import { GetUsers } from '../api';
 
 const Todo = (props: any) => {
   const [user, setUser] = useContext<any>(Context);
-  const classes = useStyles();
+  const classes = useStylesGlobal();
 
   useEffect(() => {
     GetUsers('', setUser)

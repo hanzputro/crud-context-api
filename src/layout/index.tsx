@@ -2,13 +2,13 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
-import { useStyles } from '../styles';
+import { useStylesGlobal } from '../styles';
 import Status from './Status';
 import Users from './Users';
 
 
 const Main = (props: any) => {
-  const classes = useStyles();
+  const classes = useStylesGlobal();
 
   return (
     <Container className={classes.container} maxWidth="md">
