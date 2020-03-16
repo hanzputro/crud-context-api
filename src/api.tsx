@@ -10,8 +10,8 @@ export const GetUsers = (params: string, func: any) => {
         .catch((err: any) => console.log(err))
 }
 
-// GET posts
-export const GetPosts = (params: string, func: any) => {
+// GET status
+export const GetStatus = (params: string, func: any) => {
     return axios.get(`${BaseApi}/posts${params}`)
         .then((res: any) => func(res.data))
         .catch((err: any) => console.log(err))
@@ -41,6 +41,13 @@ export const GetAlbums = (params: string, func: any) => {
 // GET photos
 export const GetPhotos = (params: string, func: any) => {
     return axios.get(`${BaseApi}/photos${params}`)
+        .then((res: any) => func(res.data))
+        .catch((err: any) => console.log(err))
+}
+
+// POST status
+export const PostStatus = (params: string, data: object, func: any) => {
+    return axios.post(`${BaseApi}/posts${params}`, data)
         .then((res: any) => func(res.data))
         .catch((err: any) => console.log(err))
 }

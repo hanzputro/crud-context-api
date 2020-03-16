@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 import { useStyles } from '../styles';
-import Posts from './Posts';
+import Status from './Status';
 import Users from './Users';
 
 
@@ -14,7 +14,7 @@ const Main = (props: any) => {
     <Container className={classes.container} maxWidth="md">
       <Grid container spacing={2}>
         <Grid item xs={8}>
-          <Posts />
+          <Status />
         </Grid>
         <Grid item xs={4}>
           <Users />
